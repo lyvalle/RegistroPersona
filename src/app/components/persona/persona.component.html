@@ -1,0 +1,90 @@
+<h1>FORMULARIO</h1>
+
+<mat-card class="body">
+  <mat-card-header class="encabezado">
+    <mat-card-title>Datos de usuario:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="contenido">
+    <form [formGroup]="formularioPersona" (ngSubmit)="RegistrarPersonas(formularioPersona)">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" required color="red" formControlName="nombre" id="nombre" name="nombre">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Apellidos" required color="red" formControlName="apellidos" #nombre>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Edad" formControlName="edad" required color="red" #edad>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="DNI" formControlName="dni" required color="red" #dni>
+      </mat-form-field>
+      <br>
+
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="cumple" placeholder="Cumpleaños" formControlName="cumple" required color="red">
+        <mat-datepicker-toggle matSuffix [for]="cumple"></mat-datepicker-toggle>
+        <mat-datepicker #cumple></mat-datepicker>
+      </mat-form-field>
+
+
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Color Favorito" formControlName="color_favorito" required color="red"
+          #color_favorito>
+      </mat-form-field>
+      <br>
+
+
+      <label id="example-radio-group-label"> Sexo </label>​
+      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+        formControlName="sexo">
+        <mat-radio-button class="example-radio-button" *ngFor="let _sexo of arraysexo" [value]="_sexo">
+          {{_sexo}}<br>
+        </mat-radio-button>
+      </mat-radio-group>
+
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Registrar</button>
+      </mat-card-actions>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+<br>
+
+<mat-card class="body_1">
+  <mat-card-header class="encabezado">
+    <mat-card-title>Registro de Personas:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="contenido">
+    <div *ngFor="let usuario of getArrayPersonas(); let i=index">
+      <ul>
+        <li>
+          {{i}} {{usuario | json}}
+          <button mat-raised-button color="primary" [class.selected]="usuario === formularioPersona" type="button"
+            (click)="onKeyUp(i,usuario)">Modificar</button>&nbsp;
+          <button mat-raised-button color="warn" (click)="Eliminar(i)">Eliminar</button>
+          <br><br>
+        </li>
+      </ul>
+    </div>
+
+  </mat-card-content>
+</mat-card>
+
+<button mat-raised-button color="warn" (click)="mostrarvalores()">MostrarRegistro</button>
+
+
+
+<pre>
+  {{formularioPersona.value | json}}
+</pre>
+
+<pre>
+  {{formularioPersona.status}}
+</pre>

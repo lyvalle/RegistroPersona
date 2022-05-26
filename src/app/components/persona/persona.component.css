@@ -1,0 +1,34 @@
+.body, .body_1{
+  background-color: ghostwhite;
+  width: 50%;
+  margin-left: 25%;
+  align-content: center;
+  text-align: justify;
+  display: inline-table;
+}
+
+.body_1{
+  height: 30%;
+  margin-top: 2%;
+}
+
+.body {
+  margin-top: 5%;
+}
+
+.contenido{
+  font-size: small;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+
